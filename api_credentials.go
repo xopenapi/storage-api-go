@@ -28,17 +28,18 @@ type CredentialsApiService service
 Create 获取上传凭证 credentials
 获取上传凭证 credentials
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param authorization an authorization header
  * @param body
-@return ApiResponse
+@return CreateUploadCredentialsRsp
 */
-func (a *CredentialsApiService) Create(ctx _context.Context, body CreateUploadCredentialsReq) (ApiResponse, *_nethttp.Response, error) {
+func (a *CredentialsApiService) Create(ctx _context.Context, authorization string, body CreateUploadCredentialsReq) (CreateUploadCredentialsRsp, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ApiResponse
+		localVarReturnValue  CreateUploadCredentialsRsp
 	)
 
 	// create path and map variables
@@ -64,6 +65,7 @@ func (a *CredentialsApiService) Create(ctx _context.Context, body CreateUploadCr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	localVarHeaderParams["authorization"] = parameterToString(authorization, "")
 	// body params
 	localVarPostBody = &body
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)

@@ -16,6 +16,13 @@ paths:
     post:
       description: 获取上传凭证 credentials
       operationId: create
+      parameters:
+      - description: an authorization header
+        in: header
+        name: authorization
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -27,7 +34,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/APIResponse'
+                $ref: '#/components/schemas/CreateUploadCredentialsRsp'
           description: successful operation
       summary: 获取上传凭证 credentials
       tags:
@@ -47,6 +54,10 @@ components:
           type: object
       type: object
     CreateUploadCredentialsRsp:
+      example:
+        msg: msg
+        code: 0
+        data: '{}'
       properties:
         code:
           format: int32

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> ApiResponse Create(ctx, body)
+> CreateUploadCredentialsRsp Create(ctx, authorization, body)
 
 获取上传凭证 credentials
 
@@ -22,11 +22,12 @@ Method | HTTP request | Description
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**authorization** | **string**| an authorization header | 
 **body** | [**CreateUploadCredentialsReq**](CreateUploadCredentialsReq.md)|  | 
 
 ### Return type
 
-[**ApiResponse**](APIResponse.md)
+[**CreateUploadCredentialsRsp**](CreateUploadCredentialsRsp.md)
 
 ### Authorization
 
