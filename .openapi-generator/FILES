@@ -1,0 +1,17 @@
+.gitignore
+.openapi-generator-ignore
+.travis.yml
+README.md
+api/openapi.yaml
+api_credentials.go
+client.go
+configuration.go
+docs/CreateUploadCredentialsReq.md
+docs/CreateUploadCredentialsRsp.md
+docs/CredentialsApi.md
+git_push.sh
+go.mod
+go.sum
+model_create_upload_credentials_req.go
+model_create_upload_credentials_rsp.go
+response.go
