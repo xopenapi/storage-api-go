@@ -1,22 +1,22 @@
 package storage_test
 
-import(
+import (
+	"bytes"
 	"context"
-	"testing"
-	"log"
-	"fmt"
-	"time"
-	"github.com/xopenapi/storage-api-go"
-	"github.com/stretchr/testify/assert"
 	"encoding/json"
+	"fmt"
+	"github.com/stretchr/testify/assert"
+	"github.com/xopenapi/storage-api-go"
+	"log"
+	"testing"
+	"time"
 )
 
 func TestCreateCredentials(t *testing.T) {
 	cfg := storage.NewConfiguration()
-	cfg.BasePath = "http://192.168.0.99:10300"
-	cfg.AddDefaultHeader("accesstoken", "0b88b62444694267af5f975782440843")
-	// apiSecret := "59a9b6f2210340fabb280764fba6d72c"
-	apiSecret := "1954acad03914a5288bf9f60f175b525"
+	cfg.BasePath = "https://api.xres.lucfish.com"
+	cfg.AddDefaultHeader("Authorization", "Bearer xxxxxxxxxxxxxxxxxxx")
+	secret := "xxxxxxxxxxxxxxxxxx"
 
 	client := storage.NewAPIClient(cfg)
 
@@ -27,22 +27,17 @@ func TestCreateCredentials(t *testing.T) {
 			"bucket": "mofanshow-avatar-1252461817",
 		},
 	}
-
-	data, err := json.Marshal(req)
-	assert.NoError(t, err, "marshal returns error")
+	bodyBuf := &bytes.Buffer{}
+	json.NewEncoder(bodyBuf).Encode(req)
 
 	timestamp := time.Now().Unix()
 	noncestr := fmt.Sprintf("%d", timestamp)
 	url := "/oss/credentials"
 
-	s := fmt.Sprintf("%s%d%s%s%s", string(data), timestamp, noncestr, url, apiSecret)
+	s := fmt.Sprintf("%s%d%s%s%s", bodyBuf.String(), timestamp, noncestr, url, secret)
 	signature := storage.Sign([]byte(s))
 
-
-	auth := context.WithValue(context.Background(), "Timestamp", timestamp)
-	auth = context.WithValue(context.Background(), "Signature", signature)
-
-	r, _, err := client.CredentialsApi.Create(auth, apiSecret, req)
+	r, _, err := client.CredentialsApi.Create(context.TODO(), fmt.Sprintf("%d", timestamp), noncestr, signature, req)
 	assert.NoError(t, err, "create credentials returns error")
 
 	log.Print(r)

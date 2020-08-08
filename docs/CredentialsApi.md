@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> CreateUploadCredentialsRsp Create(ctx, authorization, body)
+> CreateUploadCredentialsRsp Create(ctx, timestamp, noncestr, signature, body)
 
 获取上传凭证 credentials
 
@@ -22,7 +22,9 @@ Method | HTTP request | Description
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**authorization** | **string**| an authorization header | 
+**timestamp** | **string**| timestamp | 
+**noncestr** | **string**| noncestr | 
+**signature** | **string**| signature | 
 **body** | [**CreateUploadCredentialsReq**](CreateUploadCredentialsReq.md)|  | 
 
 ### Return type

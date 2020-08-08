@@ -1,9 +1,10 @@
 package storage
 
-import(
+import (
 	"crypto/md5"
 	"encoding/hex"
 	"fmt"
+	"strings"
 )
 
 func Sign(data []byte) string {
@@ -11,5 +12,5 @@ func Sign(data []byte) string {
 	m.Write(data)
 	signature := hex.EncodeToString(m.Sum(nil))
 	fmt.Printf("signature: %s\n", signature)
-	return signature
+	return strings.ToUpper(signature)
 }
