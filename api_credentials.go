@@ -27,6 +27,9 @@ type CredentialsApiService service
 
 // CredentialsOpts Optional parameters for the method 'Credentials'
 type CredentialsOpts struct {
+    Timestamp optional.String
+    Noncestr optional.String
+    Signature optional.String
     CredentialsReq optional.Interface
 }
 
@@ -35,6 +38,9 @@ Credentials 获取上传凭证
 获取上传凭证
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CredentialsOpts - Optional Parameters:
+ * @param "Timestamp" (optional.String) - 
+ * @param "Noncestr" (optional.String) - 
+ * @param "Signature" (optional.String) - 
  * @param "CredentialsReq" (optional.Interface of CredentialsReq) - 
 @return CredentialsRsp
 */
@@ -71,6 +77,15 @@ func (a *CredentialsApiService) Credentials(ctx _context.Context, localVarOption
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if localVarOptionals != nil && localVarOptionals.Timestamp.IsSet() {
+		localVarHeaderParams["Timestamp"] = parameterToString(localVarOptionals.Timestamp.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.Noncestr.IsSet() {
+		localVarHeaderParams["Noncestr"] = parameterToString(localVarOptionals.Noncestr.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.Signature.IsSet() {
+		localVarHeaderParams["Signature"] = parameterToString(localVarOptionals.Signature.Value(), "")
+	}
 	// body params
 	if localVarOptionals != nil && localVarOptionals.CredentialsReq.IsSet() {
 		localVarOptionalCredentialsReq, localVarOptionalCredentialsReqok := localVarOptionals.CredentialsReq.Value().(CredentialsReq)
@@ -80,54 +95,6 @@ func (a *CredentialsApiService) Credentials(ctx _context.Context, localVarOption
 		localVarPostBody = &localVarOptionalCredentialsReq
 	}
 
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["Authorization"] = key
-		}
-	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["Noncestr"] = key
-		}
-	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["Signature"] = key
-		}
-	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["Timestamp"] = key
-		}
-	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err

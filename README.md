@@ -49,59 +49,14 @@ Class | Method | HTTP request | Description
 
 ## ApiKey
 
-- **Type**: API key
+- **Type**: HTTP basic authentication
 
 Example
 
 ```golang
-auth := context.WithValue(context.Background(), sw.ContextAPIKey, sw.APIKey{
-    Key: "APIKEY",
-    Prefix: "Bearer", // Omit if not necessary.
-})
-r, err := client.Service.Operation(auth, args)
-```
-
-
-## Noncestr
-
-- **Type**: API key
-
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAPIKey, sw.APIKey{
-    Key: "APIKEY",
-    Prefix: "Bearer", // Omit if not necessary.
-})
-r, err := client.Service.Operation(auth, args)
-```
-
-
-## Signature
-
-- **Type**: API key
-
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAPIKey, sw.APIKey{
-    Key: "APIKEY",
-    Prefix: "Bearer", // Omit if not necessary.
-})
-r, err := client.Service.Operation(auth, args)
-```
-
-
-## Timestamp
-
-- **Type**: API key
-
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAPIKey, sw.APIKey{
-    Key: "APIKEY",
-    Prefix: "Bearer", // Omit if not necessary.
+auth := context.WithValue(context.Background(), sw.ContextBasicAuth, sw.BasicAuth{
+    UserName: "username",
+    Password: "password",
 })
 r, err := client.Service.Operation(auth, args)
 ```
