@@ -15,5 +15,5 @@ type CredentialsRsp struct {
 	// 错误消息
 	Msg string `json:"msg,omitempty"`
 	// 上传凭证数据
-	Data OneOfQCloudCredentialsData `json:"data,omitempty"`
+	Data map[string]interface{} `json:"data,omitempty"`
 }

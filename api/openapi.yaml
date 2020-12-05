@@ -49,8 +49,6 @@ components:
           type: string
         params:
           description: 计算凭证参数，具体数据结构与上传渠道对应
-          oneOf:
-          - $ref: '#/components/schemas/QCloudCredentialsParams'
           type: object
       required:
       - channel
@@ -72,8 +70,6 @@ components:
           type: string
         data:
           description: 上传凭证数据
-          oneOf:
-          - $ref: '#/components/schemas/QCloudCredentialsData'
           type: object
       required:
       - code
