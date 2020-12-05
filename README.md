@@ -49,14 +49,14 @@ Class | Method | HTTP request | Description
 
 ## ApiKey
 
-- **Type**: HTTP basic authentication
+- **Type**: API key
 
 Example
 
 ```golang
-auth := context.WithValue(context.Background(), sw.ContextBasicAuth, sw.BasicAuth{
-    UserName: "username",
-    Password: "password",
+auth := context.WithValue(context.Background(), sw.ContextAPIKey, sw.APIKey{
+    Key: "APIKEY",
+    Prefix: "Bearer", // Omit if not necessary.
 })
 r, err := client.Service.Operation(auth, args)
 ```

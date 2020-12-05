@@ -89,6 +89,18 @@ func (a *CredentialsApiService) Credentials(ctx _context.Context, localVarOption
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Authorization"] = key
+		}
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
 			localVarHeaderParams["Noncestr"] = key
 		}
 	}
