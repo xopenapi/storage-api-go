@@ -1,4 +1,4 @@
-# Go API client for storage
+# Go API client for storage-api-go
 
 storage open api
 
@@ -23,27 +23,88 @@ go get github.com/antihax/optional
 Put the package under your project folder and add the following in import:
 
 ```golang
-import "./storage"
+import "./storage-api-go"
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.xres.lucfish.com*
+All URIs are relative to *https://api.lucfish.com/storage/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CredentialsApi* | [**Create**](docs/CredentialsApi.md#create) | **Post** /oss/credentials | 获取上传凭证 credentials
+*CredentialsApi* | [**Credentials**](docs/CredentialsApi.md#credentials) | **Post** /credentials | 获取上传凭证
 
 
 ## Documentation For Models
 
- - [CreateUploadCredentialsReq](docs/CreateUploadCredentialsReq.md)
- - [CreateUploadCredentialsRsp](docs/CreateUploadCredentialsRsp.md)
+ - [CredentialsReq](docs/CredentialsReq.md)
+ - [CredentialsRsp](docs/CredentialsRsp.md)
+ - [QCloudCredentialsData](docs/QCloudCredentialsData.md)
+ - [QCloudCredentialsParams](docs/QCloudCredentialsParams.md)
 
 
 ## Documentation For Authorization
 
- Endpoints do not require authorization.
+
+
+## ApiKey
+
+- **Type**: HTTP basic authentication
+
+Example
+
+```golang
+auth := context.WithValue(context.Background(), sw.ContextBasicAuth, sw.BasicAuth{
+    UserName: "username",
+    Password: "password",
+})
+r, err := client.Service.Operation(auth, args)
+```
+
+
+## Noncestr
+
+- **Type**: API key
+
+Example
+
+```golang
+auth := context.WithValue(context.Background(), sw.ContextAPIKey, sw.APIKey{
+    Key: "APIKEY",
+    Prefix: "Bearer", // Omit if not necessary.
+})
+r, err := client.Service.Operation(auth, args)
+```
+
+
+## Signature
+
+- **Type**: API key
+
+Example
+
+```golang
+auth := context.WithValue(context.Background(), sw.ContextAPIKey, sw.APIKey{
+    Key: "APIKEY",
+    Prefix: "Bearer", // Omit if not necessary.
+})
+r, err := client.Service.Operation(auth, args)
+```
+
+
+## Timestamp
+
+- **Type**: API key
+
+Example
+
+```golang
+auth := context.WithValue(context.Background(), sw.ContextAPIKey, sw.APIKey{
+    Key: "APIKEY",
+    Prefix: "Bearer", // Omit if not necessary.
+})
+r, err := client.Service.Operation(auth, args)
+```
 
 
 

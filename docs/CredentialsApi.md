@@ -1,20 +1,20 @@
 # \CredentialsApi
 
-All URIs are relative to *https://api.xres.lucfish.com*
+All URIs are relative to *https://api.lucfish.com/storage/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Create**](CredentialsApi.md#Create) | **Post** /oss/credentials | 获取上传凭证 credentials
+[**Credentials**](CredentialsApi.md#Credentials) | **Post** /credentials | 获取上传凭证
 
 
 
-## Create
+## Credentials
 
-> CreateUploadCredentialsRsp Create(ctx, timestamp, noncestr, signature, body)
+> CredentialsRsp Credentials(ctx, optional)
 
-获取上传凭证 credentials
+获取上传凭证
 
-获取上传凭证 credentials
+获取上传凭证
 
 ### Required Parameters
 
@@ -22,18 +22,24 @@ Method | HTTP request | Description
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**timestamp** | **string**| timestamp | 
-**noncestr** | **string**| noncestr | 
-**signature** | **string**| signature | 
-**body** | [**CreateUploadCredentialsReq**](CreateUploadCredentialsReq.md)|  | 
+ **optional** | ***CredentialsOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a CredentialsOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentialsReq** | [**optional.Interface of CredentialsReq**](CredentialsReq.md)|  | 
 
 ### Return type
 
-[**CreateUploadCredentialsRsp**](CreateUploadCredentialsRsp.md)
+[**CredentialsRsp**](CredentialsRsp.md)
 
 ### Authorization
 
-No authorization required
+[ApiKey](../README.md#ApiKey), [Noncestr](../README.md#Noncestr), [Signature](../README.md#Signature), [Timestamp](../README.md#Timestamp)
 
 ### HTTP request headers
 
