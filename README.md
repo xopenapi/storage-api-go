@@ -1,4 +1,4 @@
-# Go API client for storage-api-go
+# Go API client for storage
 
 storage open api
 
@@ -23,7 +23,7 @@ go get github.com/antihax/optional
 Put the package under your project folder and add the following in import:
 
 ```golang
-import "./storage-api-go"
+import "./storage"
 ```
 
 ## Documentation for API Endpoints
