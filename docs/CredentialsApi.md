@@ -31,9 +31,6 @@ Optional parameters are passed through a pointer to a CredentialsOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **timestamp** | **optional.String**|  | 
- **noncestr** | **optional.String**|  | 
- **signature** | **optional.String**|  | 
  **credentialsReq** | [**optional.Interface of CredentialsReq**](CredentialsReq.md)|  | 
 
 ### Return type

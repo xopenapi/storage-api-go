@@ -27,9 +27,6 @@ type CredentialsApiService service
 
 // CredentialsOpts Optional parameters for the method 'Credentials'
 type CredentialsOpts struct {
-    Timestamp optional.String
-    Noncestr optional.String
-    Signature optional.String
     CredentialsReq optional.Interface
 }
 
@@ -38,9 +35,6 @@ Credentials 获取上传凭证
 获取上传凭证
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CredentialsOpts - Optional Parameters:
- * @param "Timestamp" (optional.String) - 
- * @param "Noncestr" (optional.String) - 
- * @param "Signature" (optional.String) - 
  * @param "CredentialsReq" (optional.Interface of CredentialsReq) - 
 @return CredentialsRsp
 */
@@ -76,15 +70,6 @@ func (a *CredentialsApiService) Credentials(ctx _context.Context, localVarOption
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if localVarOptionals != nil && localVarOptionals.Timestamp.IsSet() {
-		localVarHeaderParams["Timestamp"] = parameterToString(localVarOptionals.Timestamp.Value(), "")
-	}
-	if localVarOptionals != nil && localVarOptionals.Noncestr.IsSet() {
-		localVarHeaderParams["Noncestr"] = parameterToString(localVarOptionals.Noncestr.Value(), "")
-	}
-	if localVarOptionals != nil && localVarOptionals.Signature.IsSet() {
-		localVarHeaderParams["Signature"] = parameterToString(localVarOptionals.Signature.Value(), "")
 	}
 	// body params
 	if localVarOptionals != nil && localVarOptionals.CredentialsReq.IsSet() {
